@@ -38,7 +38,7 @@ async def register_handlers():
         custom_filters=[types.ChatType.is_private],
     )
     dp.register_message_handler(
-        start_bot,
+        help_bot,
         commands=["help"],
         custom_filters=[types.ChatType.is_private],
     )
