@@ -26,10 +26,12 @@ If you want to deploy own version of the bot
 then
 
 1. Create your bot at [@BotFather](https://telegram.me/BotFather)
+1. `git clone https://github.com/ZhukovGreen/telegram-standup-bot.git`
 1. Create `.env` file with:
     * BOT_TOKEN="your bot token"
     * LOGGING_LEVEL="INFO"
     
+1. `docker-compose -f docker-compose.deploy.yml build`
 1. `docker swarm init`
 2. `docker stack deploy -c docker-compose.deploy.yml
 standup-bot`
