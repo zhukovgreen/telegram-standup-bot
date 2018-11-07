@@ -24,6 +24,10 @@ from .handlers.user_settings import (
     deactivate,
     activate,
 )
+from .handlers.warnings import (
+    only_non_private_groups,
+    only_private_groups,
+)
 from .structs import BotStates
 from .utils import cancel_task
 
@@ -55,8 +59,20 @@ async def register_handlers():
         commands=["add_me"],
     )
     dp.register_message_handler(
+        only_non_private_groups,
+        types.ChatType.is_private,
+        state="*",
+        commands=["add_me"],
+    )
+    dp.register_message_handler(
         remove_me,
         types.ChatType.is_group_or_super_group,
+        commands=["remove_me"],
+    )
+    dp.register_message_handler(
+        only_non_private_groups,
+        types.ChatType.is_private,
+        state="*",
         commands=["remove_me"],
     )
 
@@ -65,6 +81,12 @@ async def register_handlers():
         types.ChatType.is_private,
         commands=["settings"],
         state=BotStates.STANDBY,
+    )
+    dp.register_message_handler(
+        only_private_groups,
+        types.ChatType.is_group_or_super_group,
+        state="*",
+        commands=["settings"],
     )
     dp.register_callback_query_handler(
         deactivate,
@@ -80,6 +102,11 @@ async def register_handlers():
         report_handler,
         types.ChatType.is_private,
         state=BotStates.STANDBY,
+        commands=["report"],
+    )
+    dp.register_message_handler(
+        only_private_groups,
+        types.ChatType.is_group_or_super_group,
         commands=["report"],
     )
     dp.register_message_handler(
