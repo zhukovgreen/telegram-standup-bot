@@ -48,7 +48,6 @@ async def remove_me(msg: types.Message):
     await bot.send_message(
         msg.from_user.id,
         r"You were removed from the standup! "
-        r"Use `/add_me` command to add you back ",
     )
 
 

@@ -132,8 +132,8 @@ async def send_reminders(user_id: int):
             await bot.send_message(
                 user_id,
                 r"Hi! A friendly reminder to submit a report."
-                r" Use `\report` command for this. If you want"
-                r"to deactivate the reminder, go to `\settings`",
+                r" Use `/report` command for this. If you want"
+                r" to deactivate the reminder, go to `/settings`",
             )
         except asyncio.CancelledError:
             return
