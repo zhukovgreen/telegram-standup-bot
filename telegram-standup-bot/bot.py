@@ -44,7 +44,7 @@ async def register_handlers():
     )
     dp.register_message_handler(
         help_bot,
-        types.ChatType.is_private,
+        state="*",
         commands=["help"],
     )
 
