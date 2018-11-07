@@ -1,8 +1,6 @@
 version: '3.3'
 services:
   api:
-    env_file:
-      - .env
     build:
       context: .
       cache_from:
@@ -17,4 +15,4 @@ services:
       restart_policy:
         condition: on-failure
     volumes:
-      - .:app/
+      - .:/app

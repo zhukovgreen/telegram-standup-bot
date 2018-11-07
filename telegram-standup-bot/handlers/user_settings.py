@@ -2,7 +2,6 @@ from aiogram import types
 
 from ..app import dp
 from ..handlers.utils import get_target_chat
-from ..structs import User
 
 
 async def settings_handler(msg: types.Message):
@@ -31,11 +30,11 @@ async def deactivate(
 ):
     user = callback_query.from_user
     target_chat = await get_target_chat(user.id)
-    users_data = await dp.storage.get_data(
-        chat=target_chat, user=user.id
+    await dp.storage.update_data(
+        chat=target_chat,
+        user=user.id,
+        data={"active": False},
     )
-    user_data: User = users_data["attrs"]
-    user_data.active = False
     await callback_query.answer("Standup is on hold")
 
 
@@ -45,9 +44,9 @@ async def activate(
     user = callback_query.from_user
     target_chat = await get_target_chat(user.id)
 
-    users_data = await dp.storage.get_data(
-        chat=target_chat, user=user.id
+    await dp.storage.update_data(
+        chat=target_chat,
+        user=user.id,
+        data={"active": True},
     )
-    user_data: User = users_data["attrs"]
-    user_data.active = True
     await callback_query.answer("Standup is active")

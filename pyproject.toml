@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-aiogram = "^1.4"
+aiogram = "^2.0"
 envparse = "^0.2.0"
 attrs = "^18.2"
 valid8 = "^3.7"
@@ -16,8 +16,6 @@ mini_lambda = "^1.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.9"
-neovim = "^0.2.6"
-notebook = "^5.7"
 
 [tool.black]
 line-length = 54

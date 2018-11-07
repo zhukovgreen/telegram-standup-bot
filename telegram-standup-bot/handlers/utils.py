@@ -1,7 +1,7 @@
 from ..app import dp
 
 
-def convert_to_report(user_data: dict) -> str:
+def convert_to_str_report(user_data: dict) -> str:
     return "\n\n".join(
         [
             f"*{ch}*\n{descr}"

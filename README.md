@@ -24,8 +24,8 @@ publishes the report to the standup channel
 # List of commands
 1. `/help` - Get a help
 1. `/start` - Start a bot
-1. `/add_me` - Add a user to the standup
-1. `/remove_me` - Remove a user from the standup
+1. `/add_me` - Add a user to the standup (Only for standup group)
+1. `/remove_me` - Remove a user from the standup (Only for standup group)
 1. `/settings` - Bot settings
 1. `/report` - Submit a report
 

@@ -1,18 +1,19 @@
 from aiogram import types
 
 from ..app import dp
-from ..structs import User, BotStates
+from ..structs import BotStates
+from ..utils import cancel_task
 
 
 async def add_me(msg: types.Message):
 
     bot = msg.bot
     chat = msg.chat
-    user_data: dict = await dp.storage.get_data(
-        chat=chat.id, user=msg.from_user.id
+    await dp.storage.set_data(
+        chat=chat.id,
+        user=msg.from_user.id,
+        data={"active": True, "task_id": None},
     )
-    user = user_data["attrs"] = User()
-    user.active = True
 
     state = dp.current_state(
         user=msg.from_user.id, chat=msg.from_user.id
@@ -33,10 +34,9 @@ async def remove_me(msg: types.Message):
     user_data: dict = await dp.storage.get_data(
         chat=chat.id, user=msg.from_user.id
     )
-    user: User = user_data["attrs"]
-    user.active = False
-    if user.task:
-        user.task.cancel()
+    if user_data["task_id"]:
+        await cancel_task(user_data["task_id"])
+
     await dp.storage.reset_data(
         chat=chat.id, user=msg.from_user.id
     )
