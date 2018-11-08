@@ -112,11 +112,13 @@ async def register_handlers():
     dp.register_message_handler(
         stop_report,
         types.ChatType.is_private,
+        state=BotStates.STANDBY,
         commands=["stop_report"],
     )
     dp.register_message_handler(
         only_private_groups,
         types.ChatType.is_group_or_super_group,
+        state="*",
         commands=["stop_report"],
     )
     dp.register_message_handler(
