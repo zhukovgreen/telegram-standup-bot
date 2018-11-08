@@ -12,6 +12,7 @@ from .handlers.manage_users_in_standup import (
 )
 from .handlers.start_bot import start_bot, help_bot
 from .handlers.user_report import (
+    stop_report,
     report_handler,
     process_feel,
     process_today,
@@ -43,9 +44,7 @@ async def register_handlers():
         commands=["start"],
     )
     dp.register_message_handler(
-        help_bot,
-        state="*",
-        commands=["help"],
+        help_bot, state="*", commands=["help"]
     )
 
     dp.register_message_handler(
@@ -108,6 +107,17 @@ async def register_handlers():
         only_private_groups,
         types.ChatType.is_group_or_super_group,
         commands=["report"],
+    )
+
+    dp.register_message_handler(
+        stop_report,
+        types.ChatType.is_private,
+        commands=["stop_report"],
+    )
+    dp.register_message_handler(
+        only_private_groups,
+        types.ChatType.is_group_or_super_group,
+        commands=["stop_report"],
     )
     dp.register_message_handler(
         process_feel, state=BotStates.FEEL

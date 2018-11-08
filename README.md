@@ -28,6 +28,7 @@ publishes the report to the standup channel
 1. `/remove_me` - Remove a user from the standup (Only for standup group)
 1. `/settings` - Bot settings
 1. `/report` - Submit a report
+1. `/stop_report` - Stop report right now
 
 
 # Deployment
