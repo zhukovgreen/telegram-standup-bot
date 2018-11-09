@@ -10,7 +10,7 @@ from ..structs import BotStates
 
 async def stop_report(msg: types.Message):
     state = dp.current_state(user=msg.from_user.id)
-    state.reset_state()
+    state.set_state(BotStates.STANDBY[0])
     await msg.reply("Report skipped!")
 
 
