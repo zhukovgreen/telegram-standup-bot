@@ -40,7 +40,7 @@ async def process_feel(msg: types.Message):
     )
 
     await msg.reply(
-        "What have you done yesturday?", reply=False
+        "What have you done yesterday?", reply=False
     )
 
     state = dp.current_state(user=user.id)
