@@ -15,7 +15,7 @@ RUN pip install --upgrade pip
 FROM base AS deps
 
 RUN pip install poetry
-RUN poetry config settings.virtualenvs.create false
+RUN poetry config virtualenvs.create false
 # copy requirements folder
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
